@@ -1,13 +1,17 @@
 import React from "react";
 import {SafeAreaView, View, Text, StyleSheet, Dimensions, TouchableOpacity, Image} from "react-native";
 import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from "react-native-paper";
 import Slider from "@react-native-community/slider";
+import BottomMenu from "./BottomMenu";
 
 const {width, height} = Dimensions.get('window').width;
 
-const MusicPlayer=()=>{
+const MusicPlayer = ({navigation}) => {
+    const theme = useTheme();
+
     return(
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.background }]}>
             <View style={styles.mainContainer}>
                 <View style={styles.artworkWrapper}>
                     <Image source={require('../assets/images/She Don`t Give A FO.jpg')} style={styles.artworkImage}/>
@@ -22,8 +26,8 @@ const MusicPlayer=()=>{
                         values={10}
                         minimumValue={0}
                         maximumValue={100}
-                        minimumTrackTintColor="#FFD369"
-                        thumbTintColor="#FFD369"
+                        minimumTrackTintColor="#d0bcff"
+                        thumbTintColor="#d0bcff"
                         maximumTrackTintColor="#FFFFFF"
                         onSlidingComplete={()=>{}}
                     />
@@ -34,34 +38,18 @@ const MusicPlayer=()=>{
                 </View>
                 <View style={styles.musicControlls}>
                         <TouchableOpacity onPress={()=>{}}>
-                            <Ionicons name="play-skip-back-outline" size={35} color="#FFD369" style={{marginTop:25}}/>
+                            <Ionicons name="play-skip-back-outline" size={35} color="#d0bcff" style={{marginTop:25}}/>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={()=>{}}>
-                            <Ionicons name="pause-circle" size={75} color="#FFD369" />
+                            <Ionicons name="pause-circle" size={75} color="#d0bcff" />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={()=>{}}>
-                            <Ionicons name="play-skip-forward-outline" size={35} color="#FFD369" style={{marginTop:25}}/>
+                            <Ionicons name="play-skip-forward-outline" size={35} color="#d0bcff" style={{marginTop:25}}/>
                         </TouchableOpacity>
                     </View>
             </View>
-            <View style={styles.bottomContainer}>
-                <View style={styles.bottomControls}>
-                    <TouchableOpacity onPress={()=>{}}>
-                        <Ionicons name="heart-outline" size={30} color="#777777" />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{}}>
-                        <Ionicons name="repeat" size={30} color="#777777" />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{}}>
-                        <Ionicons name="share-outline" size={30} color="#777777" />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{}}>
-                        <Ionicons name="ellipsis-horizontal" size={30} color="#777777" />
-                    </TouchableOpacity>
-                </View>
-            </View>
+            <BottomMenu navigation={navigation}/>
         </SafeAreaView>
-        
     )
 };
 
@@ -70,36 +58,36 @@ export default MusicPlayer;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#222831",
+        //backgroundColor: "#222831",
     },
     mainContainer: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center"
     },
-    bottomContainer:{
-        borderTopColor: '#393E46',
-        borderTopWidth: 1,
-        width: width,
-        alignItems: 'center',
-        paddingVertical: 15
-    },
-    bottomControls:{
-        flexDirection:'row',
-        justifyContent: 'space-between',
-        width: '80%'
-    },
+    // bottomContainer:{
+    //     borderTopColor: '#393E46',
+    //     borderTopWidth: 1,
+    //     width: width,
+    //     alignItems: 'center',
+    //     paddingVertical: 15
+    // },
+    // bottomControls:{
+    //     flexDirection:'row',
+    //     justifyContent: 'space-between',
+    //     width: '80%'
+    // },
     artworkWrapper:{
         width: 300,
         height: 340,
         marginBottom: 25,
-        shadowColor: '#FFFFFF',
-        shadowOffset:{
-            width: 5,
-            height: 5,
-        },
-        shadowOpacity: 0.5,
-        shadowRadius: 3.84,
+        // shadowColor: '#FFFFFF',
+        // shadowOffset:{
+        //     width: 5,
+        //     height: 5,
+        // },
+        // shadowOpacity: 0.5,
+        // shadowRadius: 3.84,
         elevation: 5,
     },
     artworkImage:{
@@ -110,13 +98,13 @@ const styles = StyleSheet.create({
     title:{
         fontSize: 18,
         fontWeight: '600',
-        textAlign: 'center',
+        verticalAlign: 'center',
         color: '#EEEEEE',
     },
     artist:{
         fontSize: 16,
         fontWeight: '200',
-        textAlign: 'center',
+        verticalAlign: 'center',
         color: '#EEEEEE',
     },
     progresContainer:{
