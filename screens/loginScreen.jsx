@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import { TextInput, Button, Text } from 'react-native-paper';
 import { useTheme } from 'react-native-paper';
 
@@ -14,6 +14,7 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
+      {/* <Image source={require('../assets/icon/soundwave_logo.PNG')} /> */}
       <Text style={styles.Text} variant="displaySmall">SoundWave</Text>
       <TextInput
         label="Usuario"
@@ -45,6 +46,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  logo: {
+    width: 100, // Ajusta el tamaño según sea necesario
+    height: 100, // Ajusta el tamaño según sea necesario
+    marginBottom: 20,
   },
   input: {
     width: '80%',

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, SafeAreaView, TouchableOpacity, Dimensions } from 'react-native';
 import { useTheme, List, Text, Menu, Divider, IconButton } from 'react-native-paper';
 import BottomMenu from '../components/BottomMenu';
+import songs from '../model/data';
 
 const { width } = Dimensions.get('window');
 
@@ -38,7 +39,7 @@ const SongsScreen = ({ navigation }) => {
             <View style={styles.mainContainer}>
                 <List.Section>
                     <List.Subheader><Text variant="titleLarge">Mis canciones</Text></List.Subheader>
-                    {songsData.map((song) => (
+                    {songs.map((song) => (
                         <TouchableOpacity key={song.id} onPress={() => handleSongPress(song.id)}>
                             <List.Item
                                 title={song.title}
